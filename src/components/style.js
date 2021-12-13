@@ -28,4 +28,40 @@ export const Navbar = styled.div`
     }
   }
 `;
-export const NewsWrapper = styled.div``;
+export const NewsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0rem;
+  gap: 2rem;
+`;
+
+export const News = styled.div`
+  background-color: #ccc;
+  border-radius: 5px;
+  width: 20rem;
+  /* border: 1px solid red; */
+  h4 {
+    padding: 0.5rem 1rem;
+    background-color: #777;
+    margin-top: -0.2rem;
+    a {
+      text-decoration: none;
+      color: black;
+      :hover {
+        color: #a13333;
+        text-decoration: underline;
+      }
+    }
+  }
+  p {
+    padding: 1rem;
+  }
+  > img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    object-fit: cover;
+    height: 15rem;
+    width: 100%;
+  }
+`;

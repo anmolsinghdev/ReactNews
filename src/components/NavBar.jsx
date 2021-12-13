@@ -49,8 +49,14 @@ const NavBar = () => {
         </form>
       </Navbar>
       <NewsWrapper>
-        {newsArr.map((news) => (
-          <NewsBox />
+        {newsArr.map(({ title, content, source, urlToImage, url }) => (
+          <NewsBox
+            title={title}
+            content={content}
+            source={source}
+            urlToImage={urlToImage}
+            url={url}
+          />
         ))}
       </NewsWrapper>
     </>

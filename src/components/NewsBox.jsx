@@ -1,10 +1,16 @@
 import React from 'react';
-
-const NewsBox = ({ news }) => {
+import { News } from './style.js';
+const NewsBox = ({ title, content, source, urlToImage, url }) => {
   return (
-    <div>
-      <h1>news</h1>
-    </div>
+    <>
+      <News>
+        <img src={`${urlToImage}`} alt={title} />
+        <h4>
+          <a href={url}>{title}</a>
+        </h4>
+        <p>{content}</p>
+      </News>
+    </>
   );
 };
 
