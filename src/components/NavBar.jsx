@@ -5,11 +5,11 @@ import NewsBox from './NewsBox';
 
 const NavBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [newsArr, setNewsArr] = useState([]);
+  const [newsArticles, setNewsArticles] = useState([]);
 
   useEffect(() => {
-    Newsapi.get(`?country=us`).then(({ data }) => {
-      setNewsArr(data.articles);
+    Newsapi.get(`/top-headlines/?country=in`).then(({ data }) => {
+      setNewsArticles(data.articles);
     });
   }, []);
 
@@ -19,11 +19,11 @@ const NavBar = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    setSearchTerm('');
     setTimeout(() => {
       if (searchTerm) {
-        Newsapi.get(`?q=${searchTerm}`).then(({ data }) => {
-          setNewsArr(data.articles);
-          console.log(newsArr);
+        Newsapi.get(`/everything?q=${searchTerm}`).then(({ data }) => {
+          setNewsArticles(data.articles);
         });
       }
     }, 500);
@@ -33,12 +33,7 @@ const NavBar = () => {
     <>
       <Navbar>
         <h2>NewsMonkey</h2>
-        <ul>
-          <li>Top-Heading</li>
-          <li>Everything</li>
-          <li>Hindi</li>
-          <li>English</li>
-        </ul>
+
         <form onSubmit={onFormSubmit}>
           <input
             type="text"
@@ -49,7 +44,7 @@ const NavBar = () => {
         </form>
       </Navbar>
       <NewsWrapper>
-        {newsArr.map(({ title, content, source, urlToImage, url }) => (
+        {newsArticles.map(({ title, content, source, urlToImage, url }) => (
           <NewsBox
             title={title}
             content={content}
