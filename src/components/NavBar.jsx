@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navbar, NewsWrapper } from './style';
 import Newsapi from '../api/Newsapi';
 import NewsBox from './NewsBox';
+import { v4 as uuidv4 } from 'uuid';
 
 const NavBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -51,6 +52,7 @@ const NavBar = () => {
             source={source}
             urlToImage={urlToImage}
             url={url}
+            key={uuidv4()}
           />
         ))}
       </NewsWrapper>
